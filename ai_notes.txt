@@ -1,0 +1,59 @@
+# FOR AI!
+
+- move.has_negative_effect()
+- move.has_positive_effect()
+- move.has_priority()
+- pokemon.stat_stages()
+- pokemon.stat_evaluation()
+- pokemon.has_protecting_move()
+- move.is_protecting_move()
+- team.has_type(type)
+- pokemon.has_status()
+- pokemon.can_get_status(status)
+- pokemon.has_choice_item()
+- item.is_choice_item()
+- move.causes_status()
+- pokemon.has_status_cause_move()
+- pokemon.hp_percentage()
+- pokemon.can_be_confused()
+- move.breaks_screen()
+- pokemon.has_screen_breaking_move()
+
+# GENERAL
+
+if cant ohko - safest 2hko
+like using tbolt into close combat since close combat has a negative effect and tbolt has a positive one
+most damage if opponent can ohko
+if opponent faster: prio, switch?
+
+# MOVES
+
+SWORDS DANCE - if cant ohko prefer unless opponent can ohko
+WHIRLWIND - if enemy.stats_raises >= 2
+JUMP KICK - dont use for finishing off, dont use if opponent has protecting move
+SAND ATTACK - banned? (bcs accuracy)
+THRASH - dont use for safe 2hko logic, unless it 2hkos - dont use if opponent has a ghost type
+DOUBLE EDGE - dont use for finishing move, unless nothing else kills
+ROAR - see Whirlwind
+SING - if cant 2hko (and opponent can be put to sleep)
+DISABLE - only use if opponent has a choice item
+MIST - if enemy has status moves that cause para / burn etc, or predicted move is status move
+COUNTER - if opponent is likely to use physical move that does not kill
+GROWTH - see Swords Dance
+POISON POWDER - if can't 3hko (and can get poisoned)
+STUN SPORE - if opponent is faster or can't 3hko (and has no status)
+SLEEP POWDER - see Sing
+STRING SHOT - if opponent is faster
+THUNDER WAVE - see Stun Spore
+TOXIC - see Poison Powder
+HYPNOSIS - see Sing
+MEDITATE - see Swords Dance
+AGILITY - if opponent is faster
+TELEPORT - if want to switch and live a hit
+RECOVER - if below 50% and can't kill or slower and will be taken below 50% and not above 80% hp
+HARDEN - if opponent can't 4hko
+CONFUSE RAY - if can't 2hko (and opponent can get confused)
+WITHDRAW - see Harden
+DEFENSE CURL - see Harden
+BARRIER - if opponent can't 3hko
+LIGHT SCREEN - if opponents have a lot of special damage (and don't have a screen cleaning move)

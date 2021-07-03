@@ -1,0 +1,10 @@
+Urshifu-R,Zacian,Conkeldurr,Scizor,Terrakion,Lucario
+85,85,85,85,85,85
+Focus Sash,Rusted Sword,Assault Vest,Life Orb,Choice Scarf,Lucarionite
+Unseen Fist,Interpid Sword,Iron Fist,Technician,Justified,Adaptability 
+Jolly,Jolly,Adamant,Adamant,Jolly,Timid
+6 HP/252 Atk/252 Spe,6 HP/252 Atk/252 Spe,252 HP/252 SpD,6 HP/252 Atk/252 Spe,6 HP/252 Atk/252 Spe,6 HP/252 Atk/252 Spe
+Surging Strikes,Swords Dance,Drain Punch,U-Turn,Close Combat,Nasty Plot
+Aqua Jet,Giant Blade,Mach Punch,Superpower,Stone Edge,Flash Cannon
+Close Combat,Close Combat,Knock Off,Bullet Punch,Earthquake,Aura Sphere
+U-Turn,Crunch,Ice Punch,Swords Dance,X-Scissor,Vacuum Wave

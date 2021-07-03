@@ -1,0 +1,5 @@
+PHYSICAL = "Physical"
+SPECIAL = "Special"
+STATUS = "Status"
+
+CATEGORIES = PHYSICAL, SPECIAL, STATUS

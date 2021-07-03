@@ -1,0 +1,10 @@
+Garchomp,Dracozolt,Dragonite,Melmetal,Dialga,Salamence
+85,85,85,85,85,85
+Focus Sash,Choice Scarf,Lum Berry,Assault Vest,Adamant Orb,Salamencite
+Rough Skin,Hustle,Multiscale,Iron Fist,Primal Armor,Intimidate
+Jolly,Adamant,Jolly,Adamant,Calm,Jolly
+6 HP/252 Atk/252 Spe,6 HP/252 Atk/252 Spe,6 HP/252 Atk/252 Spe,252 HP/252 Atk/6 Spe,252 HP/252 Def,6 HP/252 Atk/252 Spe
+Earthquake,Bolt Beak,Dragon Dance,Double Iron,Roar of Time,Dragon Dance
+Stealth Rock,Dragon Claw,Extreme Speed,Earthquake,Flamethrower,Double Edge
+Swords Dance,Earthquake,Dual Wingbeat,Thunder Punch,Rest,Earthquake
+Stone Edge,Flamethrower,Earthquake,Ice Punch,Sleep Talk,Fire Fang

@@ -1,2 +1,0 @@
-EN = "English"
-DE = "Deutsch"

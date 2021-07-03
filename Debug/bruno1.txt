@@ -1,0 +1,10 @@
+Infernape,Conkeldurr,Urshifu-S,Kommo-o,Zacian,Lucario
+84,85,85,85,85,85
+Focus Sash,Assault Vest,Choice Scarf,Throat Spray,Rusted Sword,Lucarionite
+Blaze,Iron Fist,Unseen Fist,Overcoat,Intrepid Sword,Adaptability
+Jolly,Adamant,Adamant,Modest,Jolly,Jolly
+6 HP/252 Atk/252 Spe,252 HP/252 SpD,6 HP/252 Atk/252 Spe,6 HP/252 SpA/252 Spe,6 HP/252 Atk/252 Spe,6 HP/252 Atk/252 Spe
+Taunt,Drain Punch,Wicked Blow,Clanging Soul,Swords Dance,Swords Dance
+Pyro Ball,Mach Punch,Close Combat,Clang Scales,Giant Blade,Meteor Mash
+Stealth Rocks,Knock Off,Poison Jab,Aura Sphere,Close Combat,Close Combat
+Close Combat,Ice Punch,U-turn,Flash Cannon,Crunch,Bullet Punch

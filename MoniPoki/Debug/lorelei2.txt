@@ -1,0 +1,10 @@
+Ninetales-Alola,Glaceon,Azumarill,Rotom-Wash,Calyrex,Abomasnow
+84,84,85,85,85,85
+Icy Rock,Choice Specs,Assault Vest,Wiki Berry,Choice Band,Abomasite
+Snow Warning,Slush Rush,Huge Power,Levitate,Air Lock,Soundproof
+Timid,Modest,Adamant,Timid,Adamant,Timid
+6 HP/252 SpA/252 Spe,6 HP/252 SpA/252 Spe,252 HP/252 Atk,252 HP/4 SpA/252 Spe,252 HP/252 Atk,6 HP/252 SpA/252 Spe
+Blizzard,Blizzard,Liquidation,Hail,Glacial Lance,Energy Ball
+Freeze Dry,Earth Power,Play Rough,Hydro Pump,Hi Horsepower,Blizzard
+Hail,Freeze Dry,Aqua Jet,Volt Switch,Zen Headbutt,Earthquake
+Aurora Veil,Shadow Ball,Knock Off,Thunder Wave,Seed Bomb,HP Fire

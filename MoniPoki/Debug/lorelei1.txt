@@ -1,0 +1,10 @@
+Politoed,Poliwrath,Swampert,Kingdra,Kyogre,Dracovish
+84,84,84,84,85,85
+Damp Rock,Focus Sash,Swampertite,Life Orb,Blue Orb,Choice Scarf
+Drizzle,Water Absorb,Swift Swim,Damp,Primordial Sea,Strong Jaw
+Timid,Adamant,Adamant,Jolly,Timid,Adamant
+252 HP/4 SpA/252 Spe,252 Atk/252 Spe,6 HP/252 Atk/252 Spe,6 HP/252 Atk/252 Spe,6 HP/252 SpA/252 Spe,6 HP/252 Atk/252 Spe
+Scald,Surging Strikes,Ice Punch,Muddy Water,Water Spout,Fishious Rend
+Rain Dance,Close Combat,Liquidation,Dragon Pulse,Origin Pulse,Outrage
+Haze,,Superpower,Ice Beam,Thunder,Psychic Fang
+Flip Turn,,Earthquake,Hurricane,Ice Beam,Crunch

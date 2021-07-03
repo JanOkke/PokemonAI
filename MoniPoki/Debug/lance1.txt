@@ -1,0 +1,10 @@
+Aerodactyl,Dragonite,Melmetal,Dracovish,Dialga,Salamence
+85,85,85,85,85,85
+Focus Sash,Choice Band,Assault Vest,Choice Scarf,Adamant Orb,Salamencite
+Random,Multiscale,Iron Fist,Strong Jaw,Primal Armor,Intimidate
+Jolly,Jolly,Adamant,Adamant,Calm,Jolly
+6 HP/252 Atk/252 Spe,6 HP/252 Atk/252 Spe,252 HP/252 Atk/6 Spe,6 HP/252 Atk/252 Spe,252 HP/252 SpD,6 HP/252 Atk/252 Spe
+Taunt,Outrage,Double Iron,Fishinous Rend,Roar of Time,Dragon Dance
+Stealth Rock,Extreme Speed,Earthquake,Psychic Fangs,Flamethrower,Double Edge
+Stone Edge,Dual Wingbeat,Thunder Punch,Outrage,Rest,Earthquake
+Earthquake,Earthquake,Ice Punch,Crunch,Sleep Talk,Fire Fang

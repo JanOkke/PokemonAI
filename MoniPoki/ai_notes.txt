@@ -1,0 +1,18 @@
+# GENERAL
+
+if cant ohko - safest 2hko
+like using tbolt into close combat since close combat has a negative effect and tbolt has a positive one
+most damage if opponent can ohko
+if opponent faster: prio, switch?
+
+# MOVES
+
+SWORDS DANCE - if cant ohko prefer unless opponent can ohko
+WHIRLWIND - if enemy.stats_raises >= 2
+JUMP KICK - dont use for finishing off, dont use if opponent has protecting move
+SAND ATTACK - banned? (bcs accuracy)
+THRASH - dont use for safe 2hko logic, unless it 2hkos - dont use if opponent has a ghost type
+DOUBLE EDGE - dont use for finishing move, unless nothing else kills
+ROAR - see Whirlwind
+SING - if cant 2hko (and opponent can be put to sleep)
+DISABLE -

@@ -1,0 +1,10 @@
+Grimmsnarl,Hydreigon,Marshadow,Dragapult,Spectrier,Gengar
+84,85,85,85,85,85
+Light Clay,Leftovers,Focus Sash,Life Orb,Choice Scarf,Gengarite
+Prankster,Levitate,Technician,Infiltrator,Grim Neigh,Shadow Tag
+Adamant,Timid,Jolly,Timid,Timid,Timid
+252 HP/252 Atk/6 Spe,252 SpA/252 Spe,6 HP/252 Atk/252 Spe,6 HP/252 SpA/252 Spe,6 HP/252 SpA/252 Spe, 6 HP/252 SpA/252 Spe
+Reflect,Dark Pulse,Bulk Up,Dragon Dance,Shadow Ball,Sludge Wave
+Spirit Break,Dragon Pulse,Shadow Sneak,Dragon Darts,Dark Pulse,Nasty Plot
+Taunt,Flamethrower,Spectral Thief,Phantom Force,HP Fight,Shadow Ball
+Light Screen,Thunder Wave,Drain Punch,Steel Wing,Sleep Talk,Thunderbolt

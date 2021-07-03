@@ -1,0 +1,10 @@
+Pheromosa,Metagross,Primal Groudon,Yveltal,Eternatus,Darmanitan-Galar
+85,85,85,85,85,85
+Focus Sash,Metagrossite,Red Orb,Assault Vest,Power Herb,Choice Scarf
+Beast Boost,Clear Body,Desolate Land,Dark Aura,Pressure,Gorilla Tactics
+Adamant,Jolly,Careful,Modest,Timid,Jolly
+6 HP/252 Atk/252 Spe,6 HP/252 Atk/252 Spe,252 HP/4 Atk/252 SpD,252 HP/252 SpA/6 Spe,6 HP/252 SpA/252 Spe,6 HP/252 Atk/252 Spe
+Close Combat,Zen Headbutt,Precipice Blades,Dark Hole,Meteor Beam,Icicle Crash
+Triple Axel,Fire Punch,Fire Punch,Oblivion Wing,Sludge Bomb,Flare Blitz
+U-turn,Meteor Mash,Stone Edge,Heat Wave,Dmax Cannon,Earthquake
+Poison Jab,Bullet Punch,Thunder Wave,Sucker Punch,Flamethrower,U-turn

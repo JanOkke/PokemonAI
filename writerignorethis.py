@@ -33,7 +33,9 @@ o.write("]\n")"""
 f = open("moves.txt", "r")
 o = open("_moves.py", "w")
 
-o.write("from move import Move\n\n")
+o.write("from move import Move\n"
+        "from _types import *\n"
+        "from category import *\n\n")
 
 nline = 0
 for line in f:
@@ -48,9 +50,10 @@ for line in f:
     #    print(d)
     try:
         _id, internalname, name, code, power, type, category, accuracy, pp, effchance, target, prio, flags, description = data
+        print(name, code)
         if description.__contains__("'"):
             description = description.replace("'", "")
-        print(description)
+        #print(description)
         #print(description)
     except Exception as e:
         exit(str(data) + str(e))
@@ -66,17 +69,17 @@ for line in f:
     for _ in range(len(str(internalname))):
         o.write("#")
     o.write("\n\n")
-    o.write("MOVE_" + internalname + " = Move()\n")
-    o.write("MOVE_" + internalname + ".name = '" + name + "'\n")
-    o.write("MOVE_" + internalname + ".type = '" + type + "'\n")
-    o.write("MOVE_" + internalname + ".base_damage = '" + power + "'\n")
-    o.write("MOVE_" + internalname + ".category = '" + category + "'\n")
-    o.write("MOVE_" + internalname + ".pp = '" + pp + "'\n")
-    o.write("MOVE_" + internalname + ".accuracy = '" + accuracy + "'\n")
-    o.write("MOVE_" + internalname + ".priority = '" + prio + "'\n")
-    o.write("MOVE_" + internalname + ".target = '" + target + "'\n")
-    o.write("MOVE_" + internalname + ".additional_effect_chance = '" + effchance + "'\n")
-    o.write("MOVE_" + internalname + ".description = '" + description + "'\n")
+    o.write(internalname + " = Move()\n")
+    o.write(internalname + '.name = "' + name + '"\n')
+    o.write(internalname + ".type = " + type + "\n")
+    o.write(internalname + ".base_damage = " + power + "\n")
+    o.write(internalname + ".category = " + category.upper() + "\n")
+    o.write(internalname + ".pp = " + pp + "\n")
+    o.write(internalname + ".accuracy = " + accuracy + "\n")
+    o.write(internalname + ".priority = " + prio + "\n")
+    o.write(internalname + ".target = '" + target + "'\n")
+    o.write(internalname + ".additional_effect_chance = " + effchance + "\n")
+    o.write(internalname + ".description = " + description + "\n")
     o.write("\n")
 """
 
@@ -85,10 +88,90 @@ for line in f:
 #for move in moves.MOVES:
 #    f.write(move + ' = battle.Move()\n')
 
-f = open('PBS/abilities.txt')
+#f = open('PBS/abilities.txt')
+#for line in f:
+#    try:
+#        data = line.split(",")
+#        print(data[2].replace(' ', '_').upper(), "= '" + data[1] + "'")
+#    except Exception:
+#        pass
+
+import species
+f = open("PBS\\pokemon.txt", "r", encoding='utf-8')
+o = open("_pokemon.py", "w")
+
+o.write("from pokemon import Pokemon\n"
+        "from _types import *\n"
+        "import species\n\n")
+
+nline = 0
 for line in f:
     try:
-        data = line.split(",")
-        print(data[2].replace(' ', '_').upper(), "= '" + data[1] + "'")
-    except Exception:
-        pass
+        nline += 1
+        if nline == 1:
+            continue
+        if line[0] == "#":
+            continue
+        line = line.strip("\n")
+        if line[0] == "[":
+            continue
+        k, val = line.split(' = ')
+        if k == 'InternalName':
+            internalname = val
+            print(val)
+            o.write("########")
+            for _ in range(len(str(val))):
+                o.write("#")
+            o.write("\n")
+            o.write("### " + val + " ###\n")
+            o.write("########")
+            for _ in range(len(str(val))):
+                o.write("#")
+            o.write('\n\n')
+            o.write(internalname + ' = Pokemon()\n')
+            o.write(internalname + '.species = ' + str(species.get_dex_number(internalname.capitalize())) + '\n')
+        if k == 'Type1':
+            o.write(internalname + '.types = ' + val + '\n')
+        if k == 'Type2':
+            o.write(internalname + '.types = [' + internalname + '.types, ' + val + ']\n')
+        if k == 'Abilities':
+            o.write(internalname + '.abilities = species.abilities(' + str(species.get_dex_number(internalname.capitalize())) + ')\n' + internalname + '.hidden_ability = species.hidden_ability(' + str(species.get_dex_number(internalname.capitalize())) + ')\n\n')
+    except Exception as e:
+        print(e)
+
+    #for d in data:
+    #    print(d)
+    """
+    try:
+        _id, internalname, name, code, power, type, category, accuracy, pp, effchance, target, prio, flags, description = data
+        print(name, code)
+        if description.__contains__("'"):
+            description = description.replace("'", "")
+        #print(description)
+        #print(description)
+    except Exception as e:
+        exit(str(data) + str(e))
+    #print(name, power, pp, type)
+    #print("NEWLINE\n")
+
+    o.write("########")
+    for _ in range(len(str(internalname))):
+        o.write("#")
+    o.write("\n")
+    o.write("### " + internalname + " ###\n")
+    o.write("########")
+    for _ in range(len(str(internalname))):
+        o.write("#")
+    o.write("\n\n")
+    o.write(internalname + " = Move()\n")
+    o.write(internalname + '.name = "' + name + '"\n')
+    o.write(internalname + ".type = " + type + "\n")
+    o.write(internalname + ".base_damage = " + power + "\n")
+    o.write(internalname + ".category = " + category.upper() + "\n")
+    o.write(internalname + ".pp = " + pp + "\n")
+    o.write(internalname + ".accuracy = " + accuracy + "\n")
+    o.write(internalname + ".priority = " + prio + "\n")
+    o.write(internalname + ".target = '" + target + "'\n")
+    o.write(internalname + ".additional_effect_chance = " + effchance + "\n")
+    o.write(internalname + ".description = " + description + "\n")
+    o.write("\n")"""

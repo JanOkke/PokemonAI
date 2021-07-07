@@ -1092,7 +1092,6 @@ def calculate_damage(attacker: Pokemon, defender: Pokemon, _weather: str, _terra
         effectivity /= 2
     if move.is_immune(defender.get_type_1()):
         effectivity *= 0
-    #print(effectivity, move.name)
     if defender.get_type_2() is not None:
         if move.is_immune(defender.get_type_2()):
             effectivity *= 0

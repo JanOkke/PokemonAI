@@ -36,7 +36,7 @@ while not (GENGAR.is_fainted() or BLISSEY.is_fainted()):
 
 def percentage(target_hp, damage):
     return round(damage / target_hp * 100 - 0.499)
-
+"""
 from moves_base import *
 from items import *
 
@@ -200,7 +200,7 @@ for d in DEFENDERLIST:
         #    print(oc, DEFENDER.get_species_name())
 
         #print("\n")
-        """
+        
         OUTCOMS = []
         
         for move in MOVES:
@@ -214,3 +214,103 @@ for d in DEFENDERLIST:
         for oc in OUTCOMS:
             print(oc)
         """
+DATA = [
+    "FURRET",
+    "MACHOP",
+    "HOOTHOOT",
+    "RATTATA",
+    "HOUNDOUR",
+    "SHINX",
+    "PIKACHU",
+    "BUDEW",
+    "HOOTHOOT",
+    "RATTATA",
+    "HOOTHOOT",
+    "BULBASAUR",
+    "RATTATA",
+    "PIDGEY",
+    "STARLY",
+    "SCRAGGY",
+    "WEEDLE",
+    "CATERPIE",
+    "BIDOOF",
+    "LITLEO",
+    "CATERPIE",
+    "SHROOMISH",
+    "CATERPIE",
+    "SQUIRTLE",
+    "PIDGEY",
+    "RATTATA",
+    "ZIGZAGOON",
+    "PIKACHU",
+    "PIKACHU",
+    "FURRET",
+    "ODDISH",
+    "WEEDLE",
+    "PSYDUCK",
+    "PIDGEY",
+    "PIDGEY",
+    "CHARMANDER",
+    "ZUBAT",
+    "GEODUDE",
+    "PARAS",
+    "PHANPY",
+    "DRILBUR",
+    "NUMEL",
+    "ZUBAT",
+    "GEODUDE",
+    "NOSEPASS",
+    "CLEFAIRY",
+    "NOSEPASS",
+    "LARVITAR",
+    "AZURILL",
+    "NUMEL",
+    "PIDOVE",
+    "PATRAT",
+    "SWABLU",
+    "PATRAT",
+    "SPEAROW",
+    "SPEAROW",
+    "PIKACHU",
+    "BUDEW",
+    "PIKACHU",
+    "GASTLY",
+    "MAREEP",
+    "MAGNEMITE",
+    "BELLSPROUT",
+    "PIDOVE",
+    "PIKACHU",
+    "LITLEO",
+    "SNOVER",
+    "MAREEP",
+    "BELLSPROUT",
+    "EKANS",
+    "MINUN",
+    "PLUSLE",
+]
+
+import species, movedata
+from moves_base import move_name
+from battle import Pokemon, Move
+from os import getcwd
+from loader import load_from_poke_paste
+
+DATA.sort()
+
+mon1,mon2, mon3, mon4 = load_from_poke_paste(open(getcwd() + r'\Teams\elderteam.txt'))
+mon1.calc_stats()
+mon2.calc_stats()
+mon3.calc_stats()
+mon4.calc_stats()
+
+for da in DATA:
+    new_pokemon = Pokemon.create_new_pokemon(species.get_dex_number(da.capitalize()), 12)
+    new_pokemon.calc_stats()
+    for move in species.moves(species.get_dex_number(da.capitalize()), 12, full_list=True):
+        move = move_name(move)
+        new_pokemon.moves.append(Move.create_new_move(None, movedata.get_id(move)))
+    for move in new_pokemon.moves:
+        #print(move.name)
+        damage = percentage(mon1.hp, battle.calculate_damage(new_pokemon, mon1, move=move, _weather="", _terrain="", printing=False, rand_num=100, can_crit=False))
+        if damage > 50:
+            print(new_pokemon.get_species_name(), move.name, damage, mon1.get_species_name())

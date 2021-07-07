@@ -90,7 +90,7 @@ def is_ineffective(atk_type: str, def_type: str, inverse=False) -> bool:
             return True
 
     if atk_type == FIGHTING:
-        if def_type in (BUG, PSYCHIC, FAIRY):
+        if def_type in (BUG, PSYCHIC, FAIRY, FLYING):
             return True
 
     if atk_type == FLYING:
@@ -161,6 +161,6 @@ def is_ineffective(atk_type: str, def_type: str, inverse=False) -> bool:
 
 def is_immune(atk_type: str, def_type: str) -> bool:
     return (atk_type == NORMAL and def_type == GHOST) or (atk_type == FIGHTING and def_type == GHOST) or (
-            atk_type == POISON and def_type == STEEL) or (atk_type == GROUND and def_type == STEEL) or (
+            atk_type == POISON and def_type == STEEL) or (atk_type == GROUND and def_type == FLYING) or (
                    atk_type == GHOST and def_type == NORMAL) or (atk_type == ELECTRIC and def_type == GROUND) or (
                    atk_type == PSYCHIC and def_type == DARK) or (atk_type == DRAGON and def_type == FAIRY)

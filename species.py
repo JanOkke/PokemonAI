@@ -75,7 +75,7 @@ def types(species: int) -> list:
     return _types
 
 
-def moves(species: int, level: int) -> list:
+def moves(species: int, level: int, full_list=False) -> list:
     _moves = data[species - 1].lv_up_moves
     __moves = []
     for move in _moves:
@@ -91,7 +91,9 @@ def moves(species: int, level: int) -> list:
             MOVES.append(__moves[index])
     # print(MOVES)
     MOVES.reverse()
-    print(MOVES)
+    if full_list:
+        return MOVES
+    #print(MOVES)
     if len(MOVES) <= 4:
         return MOVES
     else:

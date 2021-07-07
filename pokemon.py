@@ -131,7 +131,7 @@ class Pokemon:
         return self.abilities[self.ability_num]
 
     def has_ability(self, ability: str) -> bool:
-        return ability == self.get_ability() or ability == self.current_ability
+        return ability == self.get_ability() or ability == self.current_ability or self.get_ability().upper() == ability
 
     def has_hidden_ability(self) -> bool:
         return self.ability_num >= 2

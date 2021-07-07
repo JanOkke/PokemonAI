@@ -893,6 +893,10 @@ def calculate_damage(attacker: Pokemon, defender: Pokemon, _weather: str, _terra
         if move.type == _types.FIRE:
             base_damage *= 1.25
 
+    if defender.has_ability(abilities.LEVITATE):
+        if move.type == _types.GROUND:
+            return 0
+
     if can_crit:
 
         critical_hit = is_critical(attacker, defender, move)

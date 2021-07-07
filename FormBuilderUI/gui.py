@@ -59,7 +59,7 @@ class CalculatorFrame ( wx.Frame ):
 
 		sbSizer101 = wx.StaticBoxSizer( wx.StaticBox( sbSizer1.GetStaticBox(), wx.ID_ANY, u"Ability" ), wx.VERTICAL )
 
-		self.leftmonability = wx.TextCtrl( sbSizer101.GetStaticBox(), wx.ID_ANY, u"Adapatability", wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.leftmonability = wx.TextCtrl( sbSizer101.GetStaticBox(), wx.ID_ANY, u"Adaptability", wx.DefaultPosition, wx.DefaultSize, 0 )
 		sbSizer101.Add( self.leftmonability, 0, wx.ALL, 5 )
 
 

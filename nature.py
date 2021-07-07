@@ -32,3 +32,14 @@ NATURES = HARDY, LONELY, BRAVE, ADAMANT, NAUGHTY, BOLD, DOCILE, RELAXED, IMPISH,
 
 def nature_factor(stat: str, nature: str) -> int:
     return 1  # TODO
+
+NATURE_TABLE = {}
+for nt in NATURES:
+    NATURE_TABLE[nt.replace("_", " ")] = nt
+
+def get_nature(name):
+    try:
+        return NATURE_TABLE[name]
+    except KeyError:
+        print("No Nature?")
+        return None

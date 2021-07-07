@@ -42,6 +42,31 @@ def get_natural_gift_damage(item: str) -> int:
 
 
 def berry_matches(typing: str, item: str) -> bool:
+    #print('NOU')
+    BERRY_TABLE = {_types.FIRE: items.OCCA_BERRY,
+                   _types.WATER: items.PASSHO_BERRY,
+                   _types.ELECTRIC: items.WACAN_BERRY,
+                   _types.GRASS: items.CHOPLE_BERRY,
+                   _types.POISON: items.KEBIA_BERRY,
+                   _types.ICE: items.YACHE_BERRY,
+                   _types.FIGHTING: items.CHOPLE_BERRY,
+                   _types.GROUND: items.SHUCA_BERRY,
+                   _types.FLYING: items.COBA_BERRY,
+                   _types.PSYCHIC: items.PAYAPA_BERRY,
+                   _types.BUG: items.TANGA_BERRY,
+                   _types.ROCK: items.CHARTI_BERRY,
+                   _types.GHOST: items.KASIB_BERRY,
+                   _types.DRAGON: items.HABAN_BERRY,
+                   _types.DARK: items.COLBUR_BERRY,
+                   _types.STEEL: items.BABIRI_BERRY,
+                   _types.NORMAL: items.CHILAN_BERRY
+                   }
+    try:
+        berry = BERRY_TABLE[typing]
+        if berry == item:
+            return True
+    except KeyError:
+        return False
     return False  # TODO
 
 
@@ -1114,9 +1139,9 @@ def calculate_damage(attacker: Pokemon, defender: Pokemon, _weather: str, _terra
         if effectivity < 1:
             factor_3 *= 2
 
-    if effectivity > 1:
-        if berry_matches(move.type, defender.item):
-            factor_3 /= 2
+    #if effectivity > 1:
+    if berry_matches(move.type, defender.item):
+        factor_3 /= 2
 
     # ==============================================================================
     # STAB

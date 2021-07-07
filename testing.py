@@ -297,7 +297,8 @@ from loader import load_from_poke_paste
 
 DATA.sort()
 
-mon1,mon2, mon3, mon4 = load_from_poke_paste(open(getcwd() + r'\Teams\elderteam.txt'))
+#mon1,mon2, mon3, mon4 = load_from_poke_paste(open(getcwd() + r'\Teams\elderteam.txt'))
+mon1,mon2, mon3, mon4 = load_from_poke_paste(open(getcwd() + r'\Teams\falkner.txt'))
 mon1.calc_stats()
 mon2.calc_stats()
 mon3.calc_stats()
@@ -307,17 +308,21 @@ data_clone = []
 for da in DATA:
     if da not in data_clone:
         data_clone.append(da)
+for mon in [mon1, mon2, mon3, mon4]:
 
-for da in data_clone:
-    new_pokemon = Pokemon.create_new_pokemon(species.get_dex_number(da.capitalize()), 12)
-    new_pokemon.evs = [0, 0, 0, 0, 0, 0]
-    new_pokemon.ivs = [31,31,31,31,31,31]
-    new_pokemon.calc_stats()
-    for move in species.moves(species.get_dex_number(da.capitalize()), 12, full_list=True):
-        move = move_name(move)
-        new_pokemon.moves.append(Move.create_new_move(None, movedata.get_id(move)))
-    for move in new_pokemon.moves:
-        #print(move.name)
-        damage = percentage(mon1.hp, battle.calculate_damage(new_pokemon, mon1, move=move, _weather="", _terrain="", printing=False, rand_num=100, can_crit=False))
-        if damage > 50:
-            print('Level 12', new_pokemon.get_species_name(), move.name, 'vs Level 12', mon1.get_species_name() + ':', damage, '%')
+    for da in data_clone:
+        new_pokemon = Pokemon.create_new_pokemon(species.get_dex_number(da.capitalize()), 15)
+        new_pokemon.evs = [0, 0, 0, 0, 0, 0]
+        new_pokemon.ivs = [31,31,31,31,31,31]
+        new_pokemon.calc_stats()
+        for move in species.moves(species.get_dex_number(da.capitalize()), 15, full_list=True):
+            move = move_name(move)
+            new_pokemon.moves.append(Move.create_new_move(None, movedata.get_id(move)))
+        for move in new_pokemon.moves:
+            #print(move.name)
+            damage = percentage(mon1.hp, battle.calculate_damage(new_pokemon, mon, move=move, _weather="", _terrain="", printing=False, rand_num=100, can_crit=False))
+            if damage > 50:
+                if new_pokemon.speed > mon.speed:
+                    print('[FASTER]Level 15', new_pokemon.get_species_name(), move.name, 'vs Level 15', mon.get_species_name() + ':', damage, '%')
+                else:
+                    print('[SLOWER]Level 15', new_pokemon.get_species_name(), move.name, 'vs Level 15', mon.get_species_name() + ':', damage, '%')

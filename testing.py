@@ -303,8 +303,15 @@ mon2.calc_stats()
 mon3.calc_stats()
 mon4.calc_stats()
 
+data_clone = []
 for da in DATA:
+    if da not in data_clone:
+        data_clone.append(da)
+
+for da in data_clone:
     new_pokemon = Pokemon.create_new_pokemon(species.get_dex_number(da.capitalize()), 12)
+    new_pokemon.evs = [0, 0, 0, 0, 0, 0]
+    new_pokemon.ivs = [31,31,31,31,31,31]
     new_pokemon.calc_stats()
     for move in species.moves(species.get_dex_number(da.capitalize()), 12, full_list=True):
         move = move_name(move)
@@ -313,4 +320,4 @@ for da in DATA:
         #print(move.name)
         damage = percentage(mon1.hp, battle.calculate_damage(new_pokemon, mon1, move=move, _weather="", _terrain="", printing=False, rand_num=100, can_crit=False))
         if damage > 50:
-            print(new_pokemon.get_species_name(), move.name, damage, mon1.get_species_name())
+            print('Level 12', new_pokemon.get_species_name(), move.name, 'vs Level 12', mon1.get_species_name() + ':', damage, '%')

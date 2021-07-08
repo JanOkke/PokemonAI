@@ -7,6 +7,7 @@ import weather, terrain, moves, items, _types, abilities, status, gender
 from move import Move
 import random
 from errors import NoStockpile
+import team
 
 
 def jewel_matches(item: str, typing: str) -> bool:
@@ -1220,3 +1221,13 @@ def start_tag_battle():
 
 def start_wild_battle():
     pass
+
+
+class Battle:
+    def __init__(self):
+        self.turn = 0
+        self.team1: team.Team
+        self.team2: team.Team
+        self.flags = []
+        self.terrain = terrain.NO_TERRAIN
+        self.weather = weather.NO_WEATHER

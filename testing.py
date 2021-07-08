@@ -288,7 +288,7 @@ DATA = [
     "MINUN",
     "PLUSLE",
 ]
-
+"""
 import species, movedata
 from moves_base import move_name
 from battle import Pokemon, Move
@@ -326,3 +326,25 @@ for mon in [mon1, mon2, mon3, mon4]:
                     print('[FASTER]Level 15', new_pokemon.get_species_name(), move.name, 'vs Level 15', mon.get_species_name() + ':', damage, '%')
                 else:
                     print('[SLOWER]Level 15', new_pokemon.get_species_name(), move.name, 'vs Level 15', mon.get_species_name() + ':', damage, '%')
+"""
+
+from loader import load_from_poke_paste, getcwd
+mon1,mon2, mon3, mon4 = load_from_poke_paste(open(getcwd() + r'\Teams\falkner.txt'))
+from action import *
+from _moves import *
+
+order = ActionOrder()
+test_battle = battle.Battle()
+
+new_action = Action(MoveAction, mon4, EXTREMESPEED, _battle=test_battle, opponent=mon2)
+order.add_action(new_action)
+new_action = Action(MoveAction, mon3, EXTREMESPEED, _battle=test_battle, opponent=mon1)
+order.add_action(new_action)
+new_action = Action(MoveAction, mon1, FAKEOUT, _battle=test_battle, opponent=mon1)
+order.add_action(new_action)
+new_action = Action(MoveAction, mon2, THUNDERBOLT, _battle=test_battle, opponent=mon1)
+order.add_action(new_action)
+new_action = Action(SwitchAction, mon1, mon2, test_battle, mon3)
+order.add_action(new_action)
+
+order.handle_actions()

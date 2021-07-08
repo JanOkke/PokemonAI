@@ -3,6 +3,7 @@ from species import get_dex_number
 from items import get_item
 from nature import get_nature
 from movedata import get_id
+from os import getcwd
 
 def load_from_poke_paste(file):
     pokemons = []

@@ -27,7 +27,10 @@ def load_from_poke_paste(file):
         new_pokemon.ivs = [31,31,31,31,31,31]
         new_pokemon.evs = [0,0,0,0,0,0]
         if line.__contains__('- '):
-            new_pokemon.moves.append(Move.create_new_move(None, get_id(line.split('- ')[1])))
+            try:
+                new_pokemon.moves.append(Move.create_new_move(None, get_id(line.split('- ')[1])))
+            except TypeError:
+                print("Error", line)
         if line == "":
             new_pokemon.calc_stats()
             pokemons.append(new_pokemon)

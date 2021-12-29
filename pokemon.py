@@ -10,6 +10,7 @@ import items
 import bag
 import status
 import experience
+import copy
 
 
 class Pokemon:
@@ -128,10 +129,13 @@ class Pokemon:
         #print(self.ability_num)
         if self.ability_num >= 2:
             return self.hidden_ability
-        return self.abilities[self.ability_num]
+        try:
+            return self.abilities[self.ability_num]
+        except Exception:
+            return 'NO_ABILITY'
 
     def has_ability(self, ability: str) -> bool:
-        return ability == self.get_ability() or ability == self.current_ability or self.get_ability().upper() == ability
+        return ability == self.get_ability() or ability == self.current_ability or self.get_ability().upper() == ability or self.get_ability().upper().replace(' ', '') == ability
 
     def has_hidden_ability(self) -> bool:
         return self.ability_num >= 2
@@ -324,6 +328,8 @@ class Pokemon:
         self.hp -= damage
         if self.hp < 0:
             self.hp = 0
+        #if self.hp == 0:
+        #    print(self.get_species_name(), 'fainted!')
 
     # ==============================================================================
     # Heal
@@ -483,5 +489,32 @@ class Pokemon:
             pokemon.set_types(species.types(_species)[0])
         pokemon.heal()
         return pokemon
+
+    def clone(self):
+        pokemon = copy.copy(self)
+        return pokemon
+
+    def toString(self):
+        text = '{} (Level {})\n' \
+               '\n' \
+               'Ability: {}\n' \
+               'Item: {}\n' \
+               'Status: {}\n' \
+               '\n' \
+               'HP: {}/{}\n' \
+               'Atk: {} ({})\n' \
+               'Def: {} ({})\n' \
+               'SpA: {} ({})\n' \
+               'SpD: {} ({})\n' \
+               'Spe: {} ({})\n' \
+               '\n' \
+               'Moves:\n' \
+               '\n' \
+               ''.format(self.get_species_name(), self.level, self.get_ability(), self.item, self.status, self.hp, self.total_hp, self.attack, self.stat_stages[0], self.defense, self.stat_stages[1], self.sp_atk, self.stat_stages[2], self.sp_def, self.stat_stages[3], self.speed, self.stat_stages[4])#, self.moves[0].name, self.moves[0].pp, self.moves[0].total_pp)
+        for move in self.moves:
+            text += '{} ({}/{})\n'.format(move.name, move.pp, move.total_pp)
+        text += '\n'
+        return text
+
 
 EmptyPokemon = Pokemon()

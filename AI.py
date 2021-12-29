@@ -96,5 +96,116 @@ AI logic:
 """
 
 
+def percentage(target_hp, damage):
+    return round(damage / target_hp * 100 - 0.499)
+
+
+from legal import is_legal
+import action
+import battle
+
+
 def choose_move(player, ai):
     pass  # TODO
+
+
+def get_all_enemy_actions(_battle: battle.Battle) -> list:
+    party_enemy = _battle.team2.get_party()
+    current_mon = _battle.team2.get_first_pokemon()
+    actions = []
+    for move in current_mon.moves:
+        if is_legal(move, _battle, current_mon):
+            actions.append(action.Action(type=action.MoveAction, user=current_mon, act=move, _battle=_battle,
+                                         opponent=_battle.team1.get_first_pokemon()))
+    for party_member in range(_battle.team2.get_team_length()):
+        if party_member == 0:
+            continue
+        actions.append(
+            action.Action(type=action.SwitchAction, user=current_mon, act=party_enemy[party_member], _battle=_battle,
+                          opponent=_battle.team1.get_first_pokemon()))
+    return actions
+
+
+def get_all_possible_actions(_battle: battle.Battle, with_switching=True) -> list:
+    party_enemy = _battle.team1.get_party()
+    current_mon = _battle.team1.get_first_pokemon()
+    actions = []
+    for move in current_mon.moves:
+        if is_legal(move, _battle, current_mon):
+            actions.append(action.Action(type=action.MoveAction, user=current_mon, act=move, _battle=_battle,
+                                         opponent=_battle.team2.get_first_pokemon()))
+    if with_switching:
+        for party_member in range(_battle.team1.get_team_length()):
+            if party_member == 0:
+                continue
+            actions.append(
+                action.Action(type=action.SwitchAction, user=current_mon, act=party_enemy[party_member], _battle=_battle,
+                              opponent=_battle.team2.get_first_pokemon()))
+    return actions
+
+
+def get_likely_move(_battle: battle.Battle):
+    enemy = _battle.team2.get_first_pokemon()
+    own = _battle.team1.get_first_pokemon()
+    ...  # todo im tired
+
+
+def get_roaster(_battle: battle.Battle):
+    ROASTER = []
+    ROASTER_2 = []
+    options_atk = get_all_possible_actions(_battle)
+    options_def = get_all_enemy_actions(_battle)
+    for option_x in options_atk:
+        for option_y in options_def:
+            option_path = action.ActionOrder()
+            option_path.add_action(option_x)
+            option_path.add_action(option_y)
+            out_coms = option_path.handle_actions(ignore_prio=True)
+            for outcome in out_coms:
+                #print(outcome)
+                action_type, damage, user, opponent, act, other_action = outcome
+                damage = percentage(opponent.total_hp, damage)
+                if other_action.type == action.SwitchAction:
+                    act2 = '{} switched into {}'.format(other_action.user.get_species_name(), other_action.act.get_species_name())
+                elif other_action.type == action.MoveAction:
+                    act2 = '{} used move {}'.format(other_action.user.get_species_name(), other_action.act)
+                else:
+                    act2 = 'Something went wrong.'
+                if action_type == action.MoveAction:
+                    ROASTER.append('{} can deal {} % damage to {} with move {}. The opposing {}.'.format(user.get_species_name(), damage, opponent.get_species_name(), act, act2))
+                if action_type == action.SwitchAction:
+                    ROASTER.append('{} can switch into {}. The opposing {}.'.format(user.get_species_name(), act.get_species_name(), act2))
+
+
+                options_atk = get_all_possible_actions(_battle)
+                options_def = get_all_enemy_actions(_battle)
+                for option_x in options_atk:
+                    for option_y in options_def:
+                        option_path = action.ActionOrder()
+                        option_path.add_action(option_x)
+                        option_path.add_action(option_y)
+                        out_coms = option_path.handle_actions(ignore_prio=True)
+                        for outcome in out_coms:
+                            # print(outcome)
+                            action_type, damage, user, opponent, act, other_action = outcome
+                            damage = percentage(opponent.total_hp, damage)
+                            if other_action.type == action.SwitchAction:
+                                act2 = '{} switched into {}'.format(other_action.user.get_species_name(),
+                                                                    other_action.act.get_species_name())
+                            elif other_action.type == action.MoveAction:
+                                act2 = '{} used move {}'.format(other_action.user.get_species_name(), other_action.act)
+                            else:
+                                act2 = 'Something went wrong.'
+                            if action_type == action.MoveAction:
+                                ROASTER_2.append('{} can deal {} % damage to {} with move {}. The opposing {}.'.format(
+                                    user.get_species_name(), damage, opponent.get_species_name(), act, act2))
+                            if action_type == action.SwitchAction:
+                                ROASTER_2.append('{} can switch into {}. The opposing {}.'.format(user.get_species_name(),
+                                                                                               act.get_species_name(),
+                                                                                               act2))
+    ROASTER.sort()
+    ROASTER_2.sort()
+    for text in ROASTER:
+        print('Turn {}: {}'.format(1, text))
+    for text in ROASTER_2:
+        print('Turn {}: {}'.format(2, text))

@@ -52,8 +52,10 @@ def flags(move_id: int) -> list:
 
 
 def get_id(name: str) -> int:
+    #print(name)
     for move in data:
-        if move.name == name:
+        if move.name == name or move.internal_name == name:
+            #print("Found", name, "id")
             return int(move.move_id)
 
 #print(function_code(get_id("Fire Punch")))

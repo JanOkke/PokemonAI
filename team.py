@@ -59,5 +59,32 @@ class Team:
                 ret.append(mon)
         return ret
 
+    def clone(self):
+        new_team = Team()
+        for key in self.pokemons.keys():
+            new_team.pokemons[key] = self.pokemons[key]
+        return new_team
+
+    def change_lead(self, pokemon: Pokemon):
+        #print(pokemon.get_species_name(), 'To switch in')
+        slot = 0
+        for pokemons in self.get_party():
+            slot += 1
+            if pokemon == pokemons:
+                #print(self.get_first_pokemon().get_species_name(), 'Old lead')
+                #print(self.pokemons)
+                #print(pokemon.get_species_name(), 'Name in team.py line 71')
+                old_lead = self.get_first_pokemon()
+                self.pokemons[slot] = old_lead
+                self.pokemons[1] = pokemon
+                #print('Succesfully changed lead.')
+                #print(self.pokemons)
+                #print(self.get_first_pokemon().get_species_name(), 'New lead')
+
+    def pokemon_names(self):
+        output = []
+        for pkmn in self.pokemons.keys():
+            output.append(self.pokemons[pkmn].get_species_name())
+        return output
 
 EmptyTeam = Team()

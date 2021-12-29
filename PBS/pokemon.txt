@@ -26027,10 +26027,10 @@ Pokedex = Its thick and fluffy fur protects it from the cold and enables it to u
 BattlerPlayerY = 33
 BattlerEnemyY = 37
 BattlerAltitude = 0
-Evolutions = CINDERANCE,Level,35
+Evolutions = CINDERACE,Level,35
 [815]
-Name = Cinderance
-InternalName = CINDERANCE
+Name = Cinderace
+InternalName = CINDERACE
 Type1 = FIRE
 BaseStats = 80,116,75,119,65,75
 GenderRate = FemaleOneEighth

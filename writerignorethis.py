@@ -105,6 +105,7 @@ o.write("from pokemon import Pokemon\n"
         "import species\n\n")
 
 nline = 0
+names = []
 for line in f:
     try:
         nline += 1
@@ -118,6 +119,7 @@ for line in f:
         k, val = line.split(' = ')
         if k == 'InternalName':
             internalname = val
+            names.append(internalname)
             print(val)
             o.write("########")
             for _ in range(len(str(val))):
@@ -138,10 +140,14 @@ for line in f:
             o.write(internalname + '.abilities = species.abilities(' + str(species.get_dex_number(internalname.capitalize())) + ')\n' + internalname + '.hidden_ability = species.hidden_ability(' + str(species.get_dex_number(internalname.capitalize())) + ')\n\n')
     except Exception as e:
         print(e)
+o.write('ALL_POKEMON = [')
+for _name in names:
+    o.write(_name + ',')
+o.write(']\n\n')
 
     #for d in data:
     #    print(d)
-    """
+"""
     try:
         _id, internalname, name, code, power, type, category, accuracy, pp, effchance, target, prio, flags, description = data
         print(name, code)

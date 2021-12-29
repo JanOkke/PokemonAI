@@ -56,6 +56,10 @@ class Move:
         self.snatched = False
         self.always_crits = False  # Wicked blow etc
 
+
+    def __str__(self):
+        return self.name
+
     # ==============================================================================
     # Target / PP
     # ==============================================================================
@@ -194,6 +198,8 @@ class Move:
         move.battle = battle
         move.move_id = move_id
         move.name = movedata.name(move_id)
+        move.total_pp = movedata.total_pp(move_id)
+        move.pp = move.total_pp
         move.internal_name = movedata.internal_name(move_id)
         move.function_code = movedata.function_code(move_id)
         move.base_damage = movedata.damage(move_id)
@@ -222,3 +228,9 @@ class Move:
         except ValueError:
             pass  # TODO!!
         return move
+
+    def clone(self, incomplete):
+        move = Move()
+        move.total_pp = self.total_pp
+        raise NotImplementedError
+        #return move

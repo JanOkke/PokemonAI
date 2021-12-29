@@ -18,6 +18,10 @@ if __name__ == '__main__':
             print("Calculating...")
             left_mon = battle.Pokemon.create_new_pokemon(species.get_dex_number(self.leftmonname.Value), int(self.leftmonlevel.Value))
             right_mon = battle.Pokemon.create_new_pokemon(species.get_dex_number(self.rightmonname.Value), int(self.rightmonlevel.Value))
+            left_mon.ivs = [31,31,31,31,31,31]
+            right_mon.ivs = [31,31,31,31,31,31]
+            left_mon.calc_stats()
+            right_mon.calc_stats()
             move1 = battle.Move.create_new_move(None, movedata.get_id(self.leftmonmove1.Value))
             move2 = battle.Move.create_new_move(None, movedata.get_id(self.leftmonmove2.Value))
             move3 = battle.Move.create_new_move(None, movedata.get_id(self.leftmonmove3.Value))

@@ -1,6 +1,5 @@
 from trainer import Trainer
 from messages import textbox
-import AI
 import GUI
 from pokemon import Pokemon
 import weather, terrain, moves, items, _types, abilities, status, gender
@@ -923,6 +922,17 @@ def calculate_damage(attacker: Pokemon, defender: Pokemon, _weather: str, _terra
         if move.type == _types.GROUND:
             return 0
 
+    if defender.has_ability(abilities.MOTOR_DRIVE):
+        if move.type == _types.ELECTRIC and move.base_damage > 0: # TODO move.target ist defender
+            if defender.stat_stages[4] < 6:
+                defender.stat_stages[4] += 1
+            return 0
+
+    if defender.has_ability(abilities.VOLT_ABSORB):
+        if move.type == _types.ELECTRIC and move.base_damage > 0: # TODO move.target ist defender
+            defender.heal_hp(int(defender.total_hp/4))
+            return 0
+
     if can_crit:
 
         critical_hit = is_critical(attacker, defender, move)
@@ -1171,6 +1181,23 @@ def calculate_damage(attacker: Pokemon, defender: Pokemon, _weather: str, _terra
 #    print(special_attack, special_defense)
     factor_1 *= 1
 
+    if move.internal_name == moves.HYPNOSIS:
+        if defender.status == status.NO_STATUS:
+            if defender.has_ability(abilities.INSOMNIA):
+                return 0
+            if defender.has_ability(abilities.VITAL_SPIRIT):
+                return 0
+            if _terrain in (terrain.FAIRY, terrain.ELECTRIC): # TODO and defender.grounded
+                return 0
+            if defender.has_ability(abilities.LEAF_GUARD) and _weather == weather.SUNNY: # TODO or weather == DESOLATE LAND
+                return 0
+            if defender.has_ability(abilities.COMATOSE):
+                return 0
+            if defender.has_ability(abilities.SHIELDS_DOWN) and defender.get_hp_percentage() > 50:
+                return 0
+            defender.status = status.SLEEP
+        return 0
+
     if move.is_physical() and move.internal_name != moves.FOULPLAY:
         damage = round( (round(int(attacker.level) * 0.4 + 2) * int(base_damage) * (
                 attack / (
@@ -1200,7 +1227,8 @@ def start_single_battle(own: Trainer, enemy: Trainer, _weather: str, _terrain: s
     while battle_active:
         while not own.get_team().get_first_pokemon().is_fainted():
             player_mon, ai_mon = own.get_team().get_first_pokemon(), enemy.get_team().get_first_pokemon()
-            ai_move = AI.choose_move(own, enemy)
+            #ai_move = AI.choose_move(own, enemy)
+            ai_move = ai_mon.moves[0] # TODO
             player_move = choose_move(player_mon.moves)
             if player_mon.speed > ai_mon.speed:
                 if move_hits(player_mon, ai_mon, _weather, _terrain, player_move):
@@ -1226,8 +1254,8 @@ def start_wild_battle():
 class Battle:
     def __init__(self):
         self.turn = 0
-        self.team1: team.Team
-        self.team2: team.Team
+        self.team1 = team.Team()
+        self.team2 = team.Team()
         self.flags = []
         self.terrain = terrain.NO_TERRAIN
         self.weather = weather.NO_WEATHER

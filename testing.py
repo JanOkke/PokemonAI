@@ -327,7 +327,7 @@ for mon in [mon1, mon2, mon3, mon4]:
                 else:
                     print('[SLOWER]Level 15', new_pokemon.get_species_name(), move.name, 'vs Level 15', mon.get_species_name() + ':', damage, '%')
 """
-
+"""
 from loader import load_from_poke_paste, getcwd
 mon1,mon2, mon3, mon4 = load_from_poke_paste(open(getcwd() + r'\Teams\falkner.txt'))
 from action import *
@@ -348,3 +348,72 @@ new_action = Action(SwitchAction, mon1, mon2, test_battle, mon3)
 order.add_action(new_action)
 
 order.handle_actions()
+"""
+"""
+import species, pokemon, nature, abilities, _moves, items
+
+testmon = pokemon.Pokemon.create_new_pokemon(species.get_dex_number('Darmanitan'), 50)
+testmon.ivs = [31,31,31,31,31,31]
+testmon.evs = [0,252,0,0,0,0]
+#testmon.set_nature(nature.ADAMANT)
+testmon.calc_stats()
+
+testmon.item = items.LIFE_ORB
+testmon.moves = [_moves.FLAREBLITZ, _moves.EARTHQUAKE, _moves.SUPERPOWER, _moves.STONEEDGE]
+
+for species_num in range(len(species.data)):
+    new_mon = pokemon.Pokemon.create_new_pokemon(species_num, level=50)
+    new_mon.evs = [0,0,0,0,0,0]
+    new_mon.ivs = [31,31,31,31,31,31]
+    new_mon.calc_stats()
+    #print(new_mon.get_species_name())
+    #print(new_mon.hp, new_mon.attack, new_mon.defense, new_mon.sp_atk, new_mon.sp_def, new_mon.speed)
+    can0hko = False
+    maxdmg = []
+    for move in testmon.moves:
+        pct = percentage(new_mon.hp, battle.calculate_damage(testmon, new_mon, _weather=None, _terrain=None, move=move, printing=False, can_crit=False, rand_num=100))
+        #print(move,pct)
+        if pct > 100:
+            print(testmon.get_species_name(), 'can oneshot', new_mon.get_species_name(), 'with', move, "(" + str(pct) + "%)")
+            can0hko = True
+        maxdmg.append([pct, move.name])
+    if not can0hko:
+        maxdmg.sort()
+        maxdmg.reverse()
+        print(testmon.get_species_name(), 'can not oneshot', new_mon.get_species_name() + ".", 'Highest Damage:', maxdmg[0])
+"""
+
+test_battle = battle.Battle()
+from loader import load_from_poke_paste, getcwd
+import team
+import AI
+
+mon1,mon2,mon3,mon4 = load_from_poke_paste(open(getcwd() + r'\Teams\falkner.txt'))
+
+team1 = team.Team()
+team1.add_pokemon(mon1)
+team1.add_pokemon(mon2)
+team1.add_pokemon(mon3)
+team1.add_pokemon(mon4)
+
+mon1,mon2,mon3,mon4 = load_from_poke_paste(open(getcwd() + r'\Teams\elderteam.txt'))
+
+team2 = team.Team()
+team2.add_pokemon(mon1)
+team2.add_pokemon(mon2)
+team2.add_pokemon(mon3)
+team2.add_pokemon(mon4)
+
+test_battle.team1 = team1
+test_battle.team2 = team2
+
+
+AI.get_roaster(test_battle)
+#actions = AI.get_all_enemy_actions(test_battle)
+"""
+for action in actions:
+    print(action.type)
+    print(action.act)
+    if action.type == AI.action.MoveAction:
+        print(action.user.get_species_name(), action.opponent.get_species_name(), percentage(action.opponent.hp, AI.action.calculate_damage(action.user, action.opponent, test_battle.weather, test_battle.terrain, action.act, rand_num=100, printing=False, can_crit=False)))
+"""
